@@ -30,13 +30,13 @@ public class ReservationResource {
         return reservationService.createReservation(reservation);
     }
 
-    @PutMapping(path = "{roomId}", produces = MediaType.APPLICATION_JSON_VALUE, consumes = MediaType.APPLICATION_JSON_VALUE)
-    public Mono<String> updateReservation(@PathVariable String roomId, @RequestBody Mono<Reservation> reservation) {
-        return Mono.just("{}");
+    @PutMapping(path = "{id}", produces = MediaType.APPLICATION_JSON_VALUE, consumes = MediaType.APPLICATION_JSON_VALUE)
+    public Mono<Reservation> updateReservation(@PathVariable String id, @RequestBody Mono<Reservation> reservation) {
+        return reservationService.updateReservation(id, reservation);
     }
 
-    @DeleteMapping(path = "{roomId}", consumes = MediaType.APPLICATION_JSON_VALUE)
-    public Mono<Boolean> deleteReservation(@PathVariable String roomId) {
-        return Mono.just(true);
+    @DeleteMapping(path = "{id}", consumes = MediaType.APPLICATION_JSON_VALUE)
+    public Mono<Boolean> deleteReservation(@PathVariable String id) {
+        return reservationService.deleteReservation(id);
     }
 }
